@@ -2,12 +2,18 @@ package vlakna.frontend.trueswing;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.WindowConstants;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.List;
+import java.util.concurrent.Future;
+
+import vlakna.Values;
+import vlakna.backend.H;
 
 /**
  * Všechny operace s GUI by měly běžet v EDT (Event Dispatch Thread)<br>
@@ -80,9 +86,13 @@ import java.awt.Graphics;
  *         <td>Vrací výsledek doInBackground()</td>
  *     </tr>
  * </table>
- *
  */
 public class UkazkaSpravnehoPouzitiSwing {
+
+    private JLabel label;
+    private JPanel panel;
+    private Color color = Color.GREEN;
+    private BackgroundTask backgroundTask = new BackgroundTask();
 
     public UkazkaSpravnehoPouzitiSwing() {
         SwingUtilities.invokeLater(() -> {
@@ -93,11 +103,11 @@ public class UkazkaSpravnehoPouzitiSwing {
             frame.setLayout(null);
             frame.setVisible(true);
 
-            JPanel panel = new JPanel() {
+            panel = new JPanel() {
                 @Override
                 protected void paintComponent(Graphics g) {
                     super.paintComponent(g);
-                    g.setColor(Color.magenta);
+                    g.setColor(color);
                     g.fillOval(0, 0, getWidth(), getHeight());
                 }
             };
@@ -106,32 +116,66 @@ public class UkazkaSpravnehoPouzitiSwing {
             panel.repaint();
             panel.revalidate();
 
-            JButton button = new JButton("Spustit úlohu");
+            JButton button = new JButton(Values.START_PROCESS);
             frame.add(button);
-            button.setSize(125, 25);
+            button.setSize(175, 25);
             button.setLocation(50, 0);
             button.setBackground(Color.yellow);
-            button.addActionListener(e -> new BackgroundTask().execute());
-            button.repaint();
-            button.revalidate();
+            button.addActionListener(e -> {
+                if (!backgroundTask.isDone() || !backgroundTask.isCancelled()) {
+                    backgroundTask.execute();
+                }
+            });
+
+            label = new JLabel();
+            label.setSize(button.getSize());
+            label.setLocation(50, 25);
+            frame.add(label);
         });
     }
 
-    public static void main(String[] args) {
-        new UkazkaSpravnehoPouzitiSwing();
-    }
-
-    private class BackgroundTask extends SwingWorker<Void, Void> {
+    /**
+     * <br>
+     * Logika je taková, že:
+     * <ol>
+     *     <li>Vytvoří se nový objekt typu SwingWorker</li>
+     *     <li>První datový typ v genercie určuje, jakou návratovou hodnotu bude mít metoda doInBackground<br>
+     *         Druhý datový typ v generice určuje, s jakou hodnotou se bude pracovat mezi metodami publish a process</li>
+     *         <li>Spuštění vlákna tohoto objektu provádí metoda execute()</li>
+     *         <li>Tělo vlákna zapisujeme do metody doInBackground() (přepíšeme ji v potomkovi typu SwingWorker)</li>
+     *         <li>Pokud chceme v průběhu vlákna upravovat i GUI, tak použijeme metodu publsih (parametr této metody je
+     *         neomezené pole takového datového typu, jaký nastavíme v druhém parametru generiky)</li>
+     *         <li>Tato metoda "předá" průběžný výsledek do nitra třdy</li>
+     *         <li>Abychom s tímto výsledkem pracovali (abychom jej zobrazili na GUI), tak překryjeme metodu process,
+     *         která dostává jako parametr List datových typů, které určíme v druhém parametru generiky)</li>
+     *         <li>V metodě process si už zobrazíme průběžný výsledek, kde chceme</li>
+     *         <li>Jakmile vlákno dokončí svou činnost, zavolá se metoda done(). Tu si můžeme překrýt dle libosti</li>
+     * </ol>
+     */
+    private class BackgroundTask extends SwingWorker<Void, String> {
 
         @Override
-        protected Void doInBackground() throws Exception {
-            Thread.sleep(3000);
+        protected Void doInBackground() {
+            for (int i = 5; i > 0; i--) {
+                publish(String.format(Values.READY_IN, i));
+                H.sleep(1000);
+            }
             return null;
         }
 
         @Override
+        protected void process(List<String> chunks) {
+            color = Color.RED;
+            panel.repaint();
+            label.setText(chunks.getFirst());
+        }
+
+        @Override
         protected void done() {
-            System.out.println("completed!");
+            label.setText(Values.COMPLETED);
+            color = Color.GREEN;
+            panel.repaint();
+            backgroundTask = new BackgroundTask();
         }
     }
 

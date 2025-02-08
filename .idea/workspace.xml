@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d203f61b-1f11-435a-8063-fb63594306af" name="Changes" comment="Thread - true SWING" />
+    <list default="true" id="d203f61b-1f11-435a-8063-fb63594306af" name="Changes" comment="Thread - true SWING">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vlakna/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vlakna/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vlakna/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vlakna/Values.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vlakna/frontend/trueswing/UkazkaSpravnehoPouzitiSwing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vlakna/frontend/trueswing/UkazkaSpravnehoPouzitiSwing.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +26,10 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="21" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -27,6 +38,7 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2qMRYAHTTGdmNEyRT6Q5UjMWq6Z" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -39,20 +51,29 @@
     "Application.UkazkaSpravnehoPouzitiSwing.executor": "Run",
     "Application.Vlakna.executor": "Run",
     "Application.vlakna.frontend.swing.App.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Maven.vlakna [clean,install].executor": "Run",
+    "Maven.vlakna [clean].executor": "Run",
+    "Maven.vlakna [install].executor": "Run",
+    "Maven.vlakna [validate].executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "deletionFromPopupRequiresConfirmation": "false",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Lubor/Documents/Projekty/private/tutorials/Java/Pecinovsky/MyWork/Vlakna",
+    "last_opened_file_path": "C:/Users/Lubor/Documents/Projekty/private/vlakna",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15332031",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "terminal",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -134,6 +155,9 @@
       <workItem from="1738405391987" duration="4892000" />
       <workItem from="1738518954789" duration="2542000" />
       <workItem from="1738694087165" duration="47028000" />
+      <workItem from="1739021658481" duration="209000" />
+      <workItem from="1739021879041" duration="278000" />
+      <workItem from="1739022185179" duration="4554000" />
     </task>
     <task id="LOCAL-00001" summary="Threads - Changed structure">
       <option name="closed" value="true" />
@@ -313,6 +337,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$USER_HOME$" />
+    </ignored-roots>
     <MESSAGE value="Threads - Changed structure" />
     <MESSAGE value="Threads - continue with thread types" />
     <MESSAGE value="Threads - complete rewrite and started with ordinary threads" />

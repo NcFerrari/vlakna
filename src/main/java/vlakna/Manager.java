@@ -1,6 +1,7 @@
 package vlakna;
 
 import vlakna.frontend.swing.App;
+import vlakna.frontend.trueswing.UkazkaSpravnehoPouzitiSwing;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -10,7 +11,7 @@ import java.awt.Dimension;
 
 public class Manager {
 
-    private static final String[] BUTTONS = {Values.BUTTON_CHOOSER_SWING, Values.BUTTON_CHOOSER_FX, Values.BUTTON_CHOOSER_BOTH, Values.BUTTON_CHOOSER_TRUE_FX};
+    private static final String[] BUTTONS = {Values.BUTTON_CHOOSER_SWING, Values.BUTTON_CHOOSER_FX, Values.BUTTON_CHOOSER_BOTH, Values.BUTTON_CHOOSER_TRUE_FX, Values.BUTTON_CHOOSER_TRUE_SWING};
     private static JPanel panel;
 
     public static void main(String[] args) {
@@ -46,6 +47,9 @@ public class Manager {
                     break;
                 case Values.BUTTON_CHOOSER_TRUE_FX:
                     javafx.application.Application.launch(vlakna.frontend.truefx.App.class);
+                    break;
+                case Values.BUTTON_CHOOSER_TRUE_SWING:
+                    new Thread(UkazkaSpravnehoPouzitiSwing::new).start();
                     break;
                 default:
                     new App();

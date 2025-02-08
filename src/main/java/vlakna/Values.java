@@ -8,6 +8,7 @@ public final class Values {
     public static final String BUTTON_CHOOSER_FX = "FX";
     public static final String BUTTON_CHOOSER_BOTH = "Obojí";
     public static final String BUTTON_CHOOSER_TRUE_FX = "Správné FX";
+    public static final String BUTTON_CHOOSER_TRUE_SWING = "Správný Swing";
     public static final int GUI_CHOOSER_WIDTH = 200;
     public static final int GUI_CHOOSER_HEIGHT = 300;
     public static final int WIDTH = 1400;
@@ -43,6 +44,9 @@ public final class Values {
     public static final String SECOND_EXAMPLE_TITLE = "Druhá ukázka";
     public static final String THIRD_EXAMPLE_TITLE = "Třetí ukázka";
     public static final String FOURTH_EXAMPLE_TITLE = "Čtvrtá ukázka";
+    public static final String START_PROCESS = "Spustit proces";
+    public static final String READY_IN = "proces skončí za %d sekund";
+    public static final String COMPLETED = "hotovo!";
 
     // Typy vláken
     public static final String THREAD_TYPE_SIMPLE = "Obyčejné vlákno";
